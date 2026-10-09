@@ -1,0 +1,38 @@
+{
+  "project": "video-brut-montage-naturel",
+  "source": {
+    "file": "source/video-brut.mp4",
+    "git_ref": "origin/main:\"video brut.mp4\"",
+    "duration_seconds": 27.6,
+    "width": 720,
+    "height": 1280,
+    "frame_rate": 25,
+    "audio_loudness_lufs": -14.1,
+    "audio_true_peak_dbfs": -3.6
+  },
+  "timeline": {
+    "duration_seconds": 26.0,
+    "segments": [
+      {
+        "source_in_seconds": 0.0,
+        "source_out_seconds": 26.0,
+        "timeline_in_seconds": 0.0,
+        "reason": "Conserver la prise et le propos complets; couper uniquement la fin silencieuse détectée à environ 25.8825 s."
+      }
+    ],
+    "audio_fade_in_seconds": 0.03,
+    "audio_fade_out_seconds": 0.03
+  },
+  "output": {
+    "file": "final.mp4",
+    "width": 1080,
+    "height": 1920,
+    "frame_rate": 25,
+    "video_codec": "H.264 High, level 4.1, yuv420p, CRF 17",
+    "audio_codec": "AAC-LC, 192 kbit/s, 48000 Hz, stereo",
+    "captions": {
+      "included": false,
+      "reason": "Le modèle de transcription Whisper local n'était pas accessible; aucun service externe n'a été utilisé."
+    }
+  }
+}
