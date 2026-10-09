@@ -1,0 +1,153 @@
+<template id="frame-03-template">
+  <div data-hf-id="hf-2pvr" id="frame-03" class="scene" data-composition-id="frame-03" data-width="1080" data-height="1920" data-duration="3.8">
+    <div data-hf-id="hf-mdjt" class="scene-grid" aria-hidden="true" data-layout-ignore="true"></div>
+    <span data-hf-id="hf-eogh" class="safe-mark safe-mark--tl" aria-hidden="true" data-layout-ignore="true"></span>
+    <span data-hf-id="hf-uw1j" class="safe-mark safe-mark--tr" aria-hidden="true" data-layout-ignore="true"></span>
+    <span data-hf-id="hf-kwcz" class="safe-mark safe-mark--bl" aria-hidden="true" data-layout-ignore="true"></span>
+    <span data-hf-id="hf-lssl" class="safe-mark safe-mark--br" aria-hidden="true" data-layout-ignore="true"></span>
+
+    <header data-hf-id="hf-ex6i" class="scene-header">
+      <p data-hf-id="hf-mfxd" class="eyebrow">02 · MOUVEMENT</p>
+      <p data-hf-id="hf-gga4" class="counter">TYPOGRAPHIE EN ACTION</p>
+    </header>
+
+    <main data-hf-id="hf-ts3a" class="scene-body animer-body">
+      <p data-hf-id="hf-99fm" id="f03-kicker" class="meta-label">ANIMATION TYPOGRAPHIQUE</p>
+      <h1 data-hf-id="hf-140d" class="animer-title">
+        <span data-hf-id="hf-a49f" id="f03-word-1" class="animer-word">LES MOTS</span>
+        <span data-hf-id="hf-so45" id="f03-word-2" class="animer-word animer-word--middle">PRENNENT</span>
+        <span data-hf-id="hf-ddnf" id="f03-word-3" class="animer-word animer-word--accent">LE RYTHME</span>
+      </h1>
+      <div data-hf-id="hf-2iaw" class="animer-detail">
+        <span data-hf-id="hf-lcyq" id="f03-rule" class="accent-bar" aria-hidden="true"></span>
+        <p data-hf-id="hf-pkoo" id="f03-copy" class="copy">Chaque entrée crée une hiérarchie.</p>
+        <span data-hf-id="hf-2bo4" id="f03-stamp" class="animer-stamp" aria-label="Étape 2">02</span>
+      </div>
+      <div data-hf-id="hf-uvb2" class="animer-progress">
+        <div data-hf-id="hf-lxwj" class="progress-track"><span data-hf-id="hf-9qhv" id="f03-progress" class="progress-fill"></span></div>
+        <div data-hf-id="hf-rtyk" class="progress-caption">
+          <span data-hf-id="hf-634r">MOTS · FORMES · TEMPO</span>
+          <span data-hf-id="hf-tpeq">02 / 04</span>
+        </div>
+      </div>
+    </main>
+
+    <footer data-hf-id="hf-vrvq" class="scene-footer">
+      <p data-hf-id="hf-bth1" class="foot-note">LE MOUVEMENT PORTE LE SENS</p>
+      <p data-hf-id="hf-dquc" class="meta-label">03 / 05</p>
+    </footer>
+  </div>
+
+  <style>
+    .animer-body {
+      justify-content: center;
+      gap: 38px;
+      padding-top: 74px;
+      padding-bottom: 74px;
+    }
+
+    .animer-title {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+    }
+
+    .animer-word {
+      display: block;
+      color: var(--ink);
+      font-family: "League Gothic", sans-serif;
+      font-size: 190px;
+      font-weight: 400;
+      line-height: 0.82;
+      letter-spacing: -0.025em;
+      opacity: 0;
+      white-space: nowrap;
+    }
+
+    .animer-word--middle {
+      font-size: 166px;
+    }
+
+    .animer-word--accent {
+      color: var(--coral);
+      font-size: 174px;
+    }
+
+    .animer-detail {
+      position: relative;
+      display: flex;
+      min-height: 110px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 22px;
+      padding-right: 128px;
+    }
+
+    .animer-detail .copy {
+      margin: 0;
+      font-size: 32px;
+      opacity: 0;
+    }
+
+    .animer-stamp {
+      position: absolute;
+      top: -4px;
+      right: 5px;
+      display: grid;
+      width: 100px;
+      height: 100px;
+      place-items: center;
+      border: 3px solid var(--ink);
+      border-radius: 50%;
+      color: var(--ink);
+      font-family: "League Gothic", sans-serif;
+      font-size: 55px;
+      line-height: 1;
+      opacity: 0;
+    }
+
+    .animer-progress {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+      margin-top: 24px;
+    }
+
+    .progress-caption {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+</style>
+
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#f03-kicker", { x: -30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.38, ease: "expo.out" }, 0.2);
+
+      // Waterfall entry: the three text lines snap into a single readable phrase.
+      tl.set("#f03-word-1", { opacity: 1, y: 70 }, 0.24);
+      tl.to("#f03-word-1", { y: 0, duration: 0.18, ease: "power4.out" }, 0.24);
+      tl.set("#f03-word-2", { opacity: 1, y: 54 }, 0.39);
+      tl.to("#f03-word-2", { y: 0, duration: 0.16, ease: "power4.out" }, 0.39);
+      tl.set("#f03-word-3", { opacity: 1, y: 68 }, 0.52);
+      tl.to("#f03-word-3", { y: 0, duration: 0.16, ease: "power4.out" }, 0.52);
+      tl.fromTo("#f03-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.44, ease: "power2.out" }, 0.78);
+      tl.fromTo("#f03-copy", { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" }, 0.86);
+
+      // Spring-pop the index, then fill the short beat marker.
+      tl.fromTo(
+        "#f03-stamp",
+        { scale: 0, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.48, ease: "power3.out" },
+        0.94,
+      );
+      tl.fromTo("#f03-progress", { scaleX: 0 }, { scaleX: 0.5, duration: 0.94, ease: "power2.out" }, 1.12);
+
+      window.__timelines["frame-03"] = tl;
+    })();
+  </script>
+</template>

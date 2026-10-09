@@ -1,0 +1,1 @@
+`gsap.min.js` is GSAP 3.14.2 copied from the npm package so preview and render do not depend on a CDN request. GSAP identifies its license as the Standard “no charge” license: https://gsap.com/standard-license. The bundled file is used by this local demo project only.

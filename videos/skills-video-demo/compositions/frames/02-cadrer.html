@@ -1,0 +1,225 @@
+<template id="frame-02-template">
+  <div data-hf-id="hf-2dqd" id="frame-02" class="scene" data-composition-id="frame-02" data-width="1080" data-height="1920" data-duration="3.8">
+    <div data-hf-id="hf-mdjt" class="scene-grid" aria-hidden="true" data-layout-ignore="true"></div>
+    <span data-hf-id="hf-eogh" class="safe-mark safe-mark--tl" aria-hidden="true" data-layout-ignore="true"></span>
+    <span data-hf-id="hf-uw1j" class="safe-mark safe-mark--tr" aria-hidden="true" data-layout-ignore="true"></span>
+    <span data-hf-id="hf-kwcz" class="safe-mark safe-mark--bl" aria-hidden="true" data-layout-ignore="true"></span>
+    <span data-hf-id="hf-lssl" class="safe-mark safe-mark--br" aria-hidden="true" data-layout-ignore="true"></span>
+
+    <header data-hf-id="hf-ex6i" class="scene-header">
+      <p data-hf-id="hf-g8c7" class="eyebrow">01 · CADRAGE</p>
+      <p data-hf-id="hf-d8l0" class="counter">FORMAT AVANT EFFET</p>
+    </header>
+
+    <main data-hf-id="hf-518h" class="scene-body cadrer-body">
+      <section data-hf-id="hf-istv" class="cadrer-copy">
+        <p data-hf-id="hf-1aen" id="f02-kicker" class="meta-label">UNE INTENTION CLAIRE</p>
+        <h1 data-hf-id="hf-r3ww" id="f02-title" class="display cadrer-title">CADRER</h1>
+        <p data-hf-id="hf-hk4b" id="f02-copy" class="copy">Le format guide la composition.</p>
+        <div data-hf-id="hf-9hsg" class="cadrer-specs" aria-label="Spécifications de la démo">
+          <span data-hf-id="hf-yago" id="f02-spec-1">1080 × 1920</span>
+          <span data-hf-id="hf-ng1k" id="f02-spec-2">FRANÇAIS</span>
+          <span data-hf-id="hf-w5sg" id="f02-spec-3">20 SECONDES</span>
+        </div>
+      </section>
+
+      <div data-hf-id="hf-vzwp" class="cadrer-preview-wrap">
+        <span data-hf-id="hf-6rxb" id="f02-orbit" class="cadrer-orbit" aria-hidden="true"></span>
+        <div data-hf-id="hf-6jm2" id="f02-frame" class="canvas-frame" aria-label="Aperçu d’un cadre vertical">
+          <div data-hf-id="hf-v5qw" class="canvas-topline">
+            <span data-hf-id="hf-rxjy">FORMAT</span>
+            <span data-hf-id="hf-jv9l">9:16</span>
+          </div>
+          <div data-hf-id="hf-hkh4" class="canvas-art">
+            <span data-hf-id="hf-q5xq" class="canvas-mark">IDÉE</span>
+            <span data-hf-id="hf-n539" class="canvas-divider"></span>
+            <span data-hf-id="hf-2eq9" class="canvas-caption">UNE IMAGE À LA FOIS</span>
+          </div>
+          <div data-hf-id="hf-k9or" class="canvas-footline">
+            <span data-hf-id="hf-dmfc">1080</span>
+            <span data-hf-id="hf-7gq9">1920</span>
+          </div>
+        </div>
+        <p data-hf-id="hf-w5ke" id="f02-ratio" class="ratio-tag">VERTICAL · 9:16</p>
+      </div>
+
+      <div data-hf-id="hf-3owp" class="cadrer-progress">
+        <div data-hf-id="hf-lxwj" class="progress-track"><span data-hf-id="hf-lzqc" id="f02-progress" class="progress-fill"></span></div>
+        <div data-hf-id="hf-rtyk" class="progress-caption">
+          <span data-hf-id="hf-gk5s">CADRER</span>
+          <span data-hf-id="hf-4969">01 / 04</span>
+        </div>
+      </div>
+    </main>
+
+    <footer data-hf-id="hf-vrvq" class="scene-footer">
+      <p data-hf-id="hf-x8u3" class="foot-note">COMPOSITION · FORMAT · HIÉRARCHIE</p>
+      <p data-hf-id="hf-gkk9" class="meta-label">02 / 05</p>
+    </footer>
+  </div>
+
+  <style>
+    .cadrer-body {
+      justify-content: space-between;
+      gap: 44px;
+      padding-top: 72px;
+      padding-bottom: 72px;
+    }
+
+    .cadrer-copy {
+      position: relative;
+      z-index: 2;
+      max-width: 880px;
+    }
+
+    .cadrer-title {
+      margin-top: 22px;
+      font-size: 184px;
+      line-height: 0.88;
+    }
+
+    .cadrer-copy .copy {
+      max-width: 780px;
+      margin-top: 20px;
+    }
+
+    .cadrer-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 28px;
+      margin-top: 36px;
+      color: var(--ink);
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .cadrer-preview-wrap {
+      position: relative;
+      display: flex;
+      min-height: 570px;
+      align-items: center;
+      justify-content: center;
+      gap: 34px;
+      padding-right: 20px;
+    }
+
+    .canvas-frame {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      width: 300px;
+      height: 520px;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 3px solid var(--ink);
+      padding: 24px;
+      background: var(--paper);
+      opacity: 0;
+      transform-origin: 50% 50%;
+    }
+
+    .canvas-topline,
+    .canvas-footline {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+    }
+
+    .canvas-art {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 28px 0;
+    }
+
+    .canvas-mark {
+      color: var(--ink);
+      font-family: "League Gothic", sans-serif;
+      font-size: 82px;
+      line-height: 0.88;
+    }
+
+    .canvas-divider {
+      display: block;
+      width: 100%;
+      height: 7px;
+      background: var(--coral);
+    }
+
+    .canvas-caption {
+      max-width: 190px;
+      color: var(--muted);
+      font-size: 22px;
+      line-height: 1.4;
+    }
+
+    .ratio-tag {
+      align-self: flex-end;
+      margin: 0 0 26px;
+      color: var(--coral);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .cadrer-orbit {
+      position: absolute;
+      top: 108px;
+      right: 72px;
+      z-index: 1;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--coral);
+    }
+
+    .cadrer-progress {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+
+    .progress-caption {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+</style>
+
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+
+      // The frame is the focal element; it settles before the metadata.
+      tl.fromTo(
+        "#f02-frame",
+        { scale: 0, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.58, ease: "power3.out" },
+        0.22,
+      );
+      tl.fromTo("#f02-kicker", { x: -44, opacity: 0 }, { x: 0, opacity: 1, duration: 0.38, ease: "expo.out" }, 0.25);
+      tl.fromTo("#f02-title", { x: -68, opacity: 0 }, { x: 0, opacity: 1, duration: 0.46, ease: "power3.out" }, 0.34);
+      tl.fromTo("#f02-copy", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.42, ease: "power2.out" }, 0.62);
+      tl.fromTo("#f02-spec-1", { x: -24, opacity: 0 }, { x: 0, opacity: 1, duration: 0.34, ease: "power3.out" }, 0.86);
+      tl.fromTo("#f02-spec-2", { x: -24, opacity: 0 }, { x: 0, opacity: 1, duration: 0.34, ease: "power3.out" }, 0.96);
+      tl.fromTo("#f02-spec-3", { x: -24, opacity: 0 }, { x: 0, opacity: 1, duration: 0.34, ease: "power3.out" }, 1.06);
+      tl.fromTo("#f02-ratio", { x: 30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power2.out" }, 0.95);
+
+      // A quarter-length progress fill, authored with scale rather than width.
+      tl.fromTo("#f02-progress", { scaleX: 0 }, { scaleX: 0.25, duration: 0.86, ease: "power2.out" }, 1.18);
+
+      // One small, finite ambient breath; it does not compete with the text.
+      tl.to("#f02-orbit", { y: -6, duration: 0.72, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.16);
+
+      window.__timelines["frame-02"] = tl;
+    })();
+  </script>
+</template>

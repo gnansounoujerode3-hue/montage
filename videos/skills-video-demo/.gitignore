@@ -1,0 +1,6 @@
+# HyperFrames-generated IDs, preview bundles, and local cache.
+.hyperframes/
+
+# Keep the approved demo deliverable in Git; ignore other generated encodes.
+renders/*.mp4
+!renders/demo-video-fr-vertical.mp4

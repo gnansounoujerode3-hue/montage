@@ -1,0 +1,136 @@
+<template id="frame-01-template">
+  <div data-hf-id="hf-0jg9" id="frame-01" class="scene" data-composition-id="frame-01" data-width="1080" data-height="1920" data-duration="3.6">
+    <div data-hf-id="hf-mdjt" class="scene-grid" aria-hidden="true" data-layout-ignore="true"></div>
+    <div data-hf-id="hf-tjwh" id="f01-glow" class="ambient-dot" aria-hidden="true" data-layout-ignore="true"></div>
+    <span data-hf-id="hf-eogh" class="safe-mark safe-mark--tl" aria-hidden="true" data-layout-ignore="true"></span>
+    <span data-hf-id="hf-uw1j" class="safe-mark safe-mark--tr" aria-hidden="true" data-layout-ignore="true"></span>
+    <span data-hf-id="hf-kwcz" class="safe-mark safe-mark--bl" aria-hidden="true" data-layout-ignore="true"></span>
+    <span data-hf-id="hf-lssl" class="safe-mark safe-mark--br" aria-hidden="true" data-layout-ignore="true"></span>
+
+    <header data-hf-id="hf-ex6i" class="scene-header">
+      <p data-hf-id="hf-csad" class="eyebrow">SKILLS VIDÉO</p>
+      <p data-hf-id="hf-12mx" class="counter">DÉMO LOCALE · 00:20</p>
+    </header>
+
+    <main data-hf-id="hf-6ji7" class="scene-body hook-body">
+      <p data-hf-id="hf-6uqt" id="f01-kicker" class="hook-kicker">UNE IDÉE, EN MOUVEMENT</p>
+      <h1 data-hf-id="hf-e5k2" class="hook-title">
+        <span data-hf-id="hf-hee2" id="f01-word-1" class="hook-word">DU BRIEF</span>
+        <span data-hf-id="hf-auhe" id="f01-word-2" class="hook-word hook-word--second">AU FILM</span>
+      </h1>
+      <span data-hf-id="hf-amns" id="f01-rule" class="accent-bar" aria-hidden="true"></span>
+      <p data-hf-id="hf-c9j7" id="f01-copy" class="copy hook-copy">Cadrer, animer, assembler.</p>
+      <span data-hf-id="hf-iuvy" id="f01-stamp" class="hook-stamp" aria-label="Étape 1 sur 5">01</span>
+    </main>
+
+    <footer data-hf-id="hf-vrvq" class="scene-footer">
+      <p data-hf-id="hf-yyey" class="foot-note">UNE SÉLECTION · 5 ÉTAPES</p>
+      <p data-hf-id="hf-s4wi" class="meta-label">01 / 05</p>
+    </footer>
+  </div>
+
+  <style>
+    .hook-body {
+      justify-content: center;
+      gap: 38px;
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+
+    .hook-kicker {
+      margin: 0;
+      color: var(--coral);
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .hook-title {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+    }
+
+    .hook-word {
+      display: block;
+      color: var(--ink);
+      font-family: "League Gothic", sans-serif;
+      font-size: 212px;
+      font-weight: 400;
+      line-height: 0.82;
+      letter-spacing: -0.025em;
+      opacity: 0;
+      white-space: nowrap;
+    }
+
+    .hook-word--second {
+      color: var(--coral);
+    }
+
+    .hook-copy {
+      max-width: 730px;
+      margin: 0;
+      font-size: 38px;
+    }
+
+    .hook-stamp {
+      position: absolute;
+      right: 12px;
+      bottom: 80px;
+      display: grid;
+      width: 110px;
+      height: 110px;
+      place-items: center;
+      border: 3px solid var(--coral);
+      border-radius: 50%;
+      color: var(--coral);
+      font-family: "League Gothic", sans-serif;
+      font-size: 60px;
+      line-height: 1;
+      opacity: 0;
+    }
+
+    .ambient-dot {
+      top: 445px;
+      right: 24px;
+      width: 650px;
+      height: 650px;
+    }
+</style>
+
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+
+      // Ambient glow-bloom: one bounded arrival behind the headline.
+      tl.fromTo(
+        "#f01-glow",
+        { opacity: 0, scale: 0.82 },
+        { opacity: 0.16, scale: 1, duration: 0.92, ease: "power2.out" },
+        0.12,
+      );
+
+      // Waterfall entry: binary reveal, one shared downward direction, overlapping settle.
+      tl.set("#f01-word-1", { opacity: 1, y: 78 }, 0.18);
+      tl.to("#f01-word-1", { y: 0, duration: 0.19, ease: "power4.out" }, 0.18);
+      tl.set("#f01-word-2", { opacity: 1, y: 58 }, 0.34);
+      tl.to("#f01-word-2", { y: 0, duration: 0.16, ease: "power4.out" }, 0.34);
+      tl.set("#f01-kicker", { opacity: 1, y: 42 }, 0.43);
+      tl.to("#f01-kicker", { y: 0, duration: 0.14, ease: "power4.out" }, 0.43);
+      tl.set("#f01-copy", { opacity: 1, y: 38 }, 0.65);
+      tl.to("#f01-copy", { y: 0, duration: 0.14, ease: "power4.out" }, 0.65);
+
+      tl.fromTo("#f01-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.48, ease: "power2.out" }, 0.72);
+
+      // Smooth spring-pop, held after landing.
+      tl.fromTo(
+        "#f01-stamp",
+        { scale: 0, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.52, ease: "power3.out" },
+        0.82,
+      );
+
+      window.__timelines["frame-01"] = tl;
+    })();
+  </script>
+</template>
