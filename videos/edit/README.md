@@ -10,6 +10,11 @@
 - [`motion-design/render_overlay.py`](motion-design/render_overlay.py) — générateur local des éléments graphiques animés.
 - [`snapshots/contact-sheet.png`](snapshots/contact-sheet.png) — contrôle visuel à cinq moments du rendu.
 
+## Outils de création locale
+
+- [`motion-canvas/`](motion-canvas/README.md) — animations 2D, titres et transitions (canevas vertical 1080 × 1920).
+- [`threejs-3d/`](threejs-3d/README.md) — scène 3D locale avec capture WebM verticale.
+
 ## Direction artistique
 
 Style éditorial / scrapbook inspiré de Pinterest : papier crème, encre chaude et accents terracotta; carte « NOTES de studio », témoin REC animé, waveform audio avec progression, petit motif dessiné, et léger zoom avant progressif. L’unique rush utilisé est la prise brute fournie : pas de stock, pas de plan inventé, pas d’envoi vidéo à un service externe. Le mix d’origine reste seul, avec un fondu de 30 ms aux bords.

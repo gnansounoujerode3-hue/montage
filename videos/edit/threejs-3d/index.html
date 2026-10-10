@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111014" />
+    <meta name="description" content="Atelier 3D local pour créer et capturer des animations verticales avec Three.js." />
+    <title>Atelier 3D — Montage local</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="wordmark" href="#top" aria-label="Atelier 3D, accueil">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>ATELIER <b>03</b></span>
+        </a>
+        <div class="local-status"><span class="status-dot"></span>RENDU LOCAL · AUCUN UPLOAD</div>
+      </header>
+
+      <main id="top">
+        <section class="intro">
+          <div class="intro-copy">
+            <p class="eyebrow"><span>01</span> MOTION DESIGN · THREE.JS</p>
+            <h1>LA FORME<br /><em>EN MOUVEMENT.</em></h1>
+            <p class="intro-text">Un atelier 3D gratuit, exécuté dans ce navigateur. Ajuste le rythme, prévisualise en vertical et exporte une boucle WebM à utiliser dans le montage.</p>
+            <div class="intro-note"><span class="note-line"></span><span>1080 × 1920 &nbsp;·&nbsp; 25 i/s &nbsp;·&nbsp; 8 secondes</span></div>
+          </div>
+
+          <div class="stage-column">
+            <div class="stage-topline">
+              <span>ÉTUDE Nº 001</span>
+              <span class="live-indicator"><i></i> EN DIRECT</span>
+            </div>
+            <div class="stage-frame">
+              <div id="stage" class="stage" aria-label="Aperçu vertical de l’animation 3D"></div>
+              <div class="stage-caption stage-caption-top" aria-hidden="true"><span>OBJET / 001</span><span>FORME ABSTRAITE</span></div>
+              <div class="stage-caption stage-caption-bottom" aria-hidden="true"><span>ÉTUDE DE MOUVEMENT</span><span>1080 × 1920</span></div>
+              <div class="stage-index" aria-hidden="true">01</div>
+            </div>
+            <div class="stage-foot"><span>SCÈNE PROCÉDURALE</span><span>RÉSEAU DÉSACTIVÉ</span></div>
+          </div>
+        </section>
+
+        <section class="control-card" aria-label="Commandes de l’animation">
+          <div class="control-heading">
+            <div>
+              <p class="eyebrow">CONTRÔLES</p>
+              <h2>Réglez la cadence.</h2>
+            </div>
+            <button id="motion-button" class="text-button" type="button" aria-pressed="false"><span class="play-symbol" aria-hidden="true">Ⅱ</span><span id="motion-label">Mettre en pause</span></button>
+          </div>
+
+          <div class="control-row">
+            <label class="speed-control" for="speed-slider">
+              <span class="control-label">VITESSE</span>
+              <input id="speed-slider" type="range" min="0.25" max="1.75" step="0.05" value="1" />
+              <span id="speed-value" class="speed-value">1.00×</span>
+            </label>
+            <div class="export-control">
+              <div class="export-copy"><span class="control-label">CAPTURE VERTICALE</span><span id="record-status" class="record-status">Boucle prête · WebM sans audio</span></div>
+              <button id="record-button" class="export-button" type="button"><span class="record-icon" aria-hidden="true"></span>ENREGISTRER · 8 S</button>
+              <a id="download-link" class="download-link" hidden>TÉLÉCHARGER LE WEBM <span aria-hidden="true">↓</span></a>
+            </div>
+          </div>
+          <div class="progress-track" aria-hidden="true"><span id="record-progress"></span></div>
+        </section>
+      </main>
+
+      <footer class="footer"><span>THREE.JS · OUTIL LIBRE EN LOCAL</span><span>LES RENDUS RESTENT SUR CET APPAREIL</span></footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
