@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "shared": {
+    "background": "#F7F2E2",
+    "range": [0, 4],
+    "size": {
+      "x": 1080,
+      "y": 1920
+    },
+    "audioOffset": 0
+  },
+  "preview": {
+    "fps": 25,
+    "resolutionScale": 1
+  },
+  "rendering": {
+    "fps": 25,
+    "resolutionScale": 1
+  }
+}
