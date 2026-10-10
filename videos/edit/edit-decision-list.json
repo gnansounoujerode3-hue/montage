@@ -1,5 +1,5 @@
 {
-  "project": "video-brut-montage-naturel",
+  "project": "video-brut-editorial-motion-design",
   "source": {
     "file": "source/video-brut.mp4",
     "git_ref": "origin/main:\"video brut.mp4\"",
@@ -17,11 +17,25 @@
         "source_in_seconds": 0.0,
         "source_out_seconds": 26.0,
         "timeline_in_seconds": 0.0,
-        "reason": "Conserver la prise et le propos complets; couper uniquement la fin silencieuse détectée à environ 25.8825 s."
+        "reason": "Garder la prise continue et couper uniquement la fin silencieuse détectée vers 25.8825 s."
       }
     ],
+    "camera_push_max_scale": 1.035,
     "audio_fade_in_seconds": 0.03,
     "audio_fade_out_seconds": 0.03
+  },
+  "design": {
+    "style": "scrapbook éditorial chaud, inspiré de Pinterest",
+    "palette": ["#F7F2E2", "#1F1B19", "#E88C5A"],
+    "elements": [
+      "carte NOTES de studio animée à l'entrée",
+      "badge REC discret avec pulsation lente",
+      "waveform de 54 barres calculée depuis l'audio, progression animée",
+      "accent étoile dessiné",
+      "légère poussée avant et grain très subtil"
+    ],
+    "additional_footage": false,
+    "external_media_services_used": false
   },
   "output": {
     "file": "final.mp4",
@@ -32,7 +46,7 @@
     "audio_codec": "AAC-LC, 192 kbit/s, 48000 Hz, stereo",
     "captions": {
       "included": false,
-      "reason": "Le modèle de transcription Whisper local n'était pas accessible; aucun service externe n'a été utilisé."
+      "reason": "Aucun modèle de transcription local disponible; aucun texte n'a été inventé et aucun service externe n'a été utilisé."
     }
   }
 }

@@ -1,35 +1,32 @@
-# Rapport de montage et de contrôle qualité
+# Rapport — édition motion design
 
 ## Intention
 
-Montage naturel et resserré, en gardant le propos complet et le cadrage de la prise face caméra. Aucun B-roll, musique, effet décoratif ou étalonnage appuyé. La finition se limite à la mise à l’échelle propre, à une très légère protection des bords audio et à la suppression de la fin silencieuse.
+Créer une finition sociale plus éditoriale et inspirée de Pinterest, sans inventer le contenu parlé ni les images. La prise face caméra reste la seule source vidéo et l’audio d’origine reste au premier plan.
 
-## Décisions de montage
+## Choix de montage et de design
 
-- **Source :** `source/video-brut.mp4`, copie inchangée de `origin/main:"video brut.mp4"`.
-- **Plan :** une prise continue, de 00:00:00.000 à 00:00:26.000; aucun saut au milieu du propos.
-- **Fin :** l’analyse de silence a repéré le silence terminal vers 25,8825 s. La coupe à 26,000 s conserve le propos et une courte retombée naturelle, tout en supprimant environ 1,6 s sur les 27,6 s de l’original.
-- **Image :** le cadrage portrait existant est conservé; agrandissement Lanczos de 720 × 1280 à 1080 × 1920, sans recadrage.
-- **Son :** audio conservé, avec fondus d’entrée et de sortie de 30 ms. Niveau mesuré avant et après : −14,1 LUFS intégrés, true peak −3,6 dBFS; aucune musique ajoutée.
-- **Sous-titres :** non inclus. Le modèle Whisper local autorisé n’a pas pu être téléchargé depuis son hébergement inaccessible. Aucun service externe n’a été utilisé. Ajouter les sous-titres après réception d’une transcription ou disponibilité d’un modèle local.
+- **Source :** `source/video-brut.mp4`, copie inchangée de `origin/main:"video brut.mp4"` (27,6 s; 720 × 1280; 25 i/s).
+- **Structure :** une seule prise continue jusqu’à 26,000 s. La fin silencieuse commence vers 25,8825 s; la coupe conserve le propos et une courte retombée.
+- **Cadrage :** portrait plein cadre conservé, avec une poussée avant lente et régulière d’environ 3,5 %, centrée pour garder le visage dans le cadre.
+- **Direction artistique :** papier crème, encre brun-noir et accent terracotta, pour rappeler le décor et les tons du rush; typographie sans-serif + manuscrite.
+- **Motion design :** carte « NOTES de studio » animée à l’entrée, badge REC discret, waveform de 54 barres calculée depuis l’audio et progression animée, petit accent étoile. La partie basse reste dégagée pour de futurs sous-titres.
+- **Finition image :** hausse très légère du contraste et de la saturation, grain à peine perceptible; pas de filtre agressif ni de recadrage abrupt.
+- **Rushes / B-roll :** aucun plan additionnel n’a été fourni; aucun stock ni visuel de synthèse n’a été ajouté.
+- **Audio :** voix conservée, sans musique ni effet sonore ajouté; fondus de 30 ms. Mesure après export : −14,1 LUFS intégrés, true peak −3,6 dBFS.
+- **Sous-titres :** non inclus à ce stade. Il n’y a pas de moteur ASR/modèle local accessible; aucune transcription n’a été inventée et aucun service externe n’a reçu la vidéo. Ajouter un `.txt` ou `.srt` permettra de créer une piste fidèle.
 
-## Export
+## Export et vérification
 
 | Paramètre | Résultat |
 |---|---|
 | Fichier | `final.mp4` |
+| Vidéo | H.264 High, yuv420p, CRF 17 |
+| Image / cadence | 1080 × 1920, 25 i/s, 650 images |
 | Durée vidéo | 26,000 s |
-| Image | 1080 × 1920, 9:16, yuv420p |
-| Cadence | 25 i/s, 650 images |
-| Vidéo | H.264 High, niveau 4.1, CRF 17 |
 | Audio | AAC-LC, 48 kHz, stéréo, 192 kbit/s |
-| Taille | 18 914 721 octets (≈ 18,9 MB) |
-| Durée du conteneur | 26,016 s (marge d’encodage AAC) |
-| Loudness intégré | −14,1 LUFS |
-| True peak | −3,6 dBFS |
+| Durée conteneur | 26,016 s (marge d’encodage AAC) |
+| Taille | 20 777 976 octets (≈ 20,8 MB) |
+| Loudness / true peak | −14,1 LUFS / −3,6 dBFS |
 
-## Vérification
-
-- Le rendu a été relu par FFprobe : vidéo H.264 1080 × 1920 à 25/1 i/s, 650 images; flux audio AAC présent.
-- Le contrôle automatisé `video-editing/scripts/verify-render.mjs` passe : dimensions, codec, format de pixel, audio et durée (26 s ± 0,02 s).
-- Une planche de contrôle, ainsi que cinq images individuelles prises à 0,5 s, 6 s, 12,5 s, 19 s et 25,5 s, se trouvent dans `snapshots/`.
+FFprobe confirme les flux et dimensions; le rendu a été décodé sans erreur. Le contrôle automatisé `video-editing/scripts/verify-render.mjs` passe (1080 × 1920, H.264, yuv420p, audio présent, durée 26 s ± 0,02 s). La planche de contrôle et les images individuelles sont dans `snapshots/`.
