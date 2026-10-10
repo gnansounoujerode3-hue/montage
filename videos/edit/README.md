@@ -2,7 +2,8 @@
 
 ## Livrables
 
-- [`final.mp4`](final.mp4) — export vertical social 1080 × 1920, 25 i/s, 26 s.
+- [`final.mp4`](final.mp4) — export vertical social 1080 × 1920, 25 i/s, 26 s, avec sous-titres intégrés.
+- [`captions-en.srt`](captions-en.srt) — sous-titres anglais synchronisés, aussi fournis séparément pour les retouches.
 - [`source/video-brut.mp4`](source/video-brut.mp4) — copie inchangée de l’original `origin/main:"video brut.mp4"`.
 - [`edit-report.md`](edit-report.md) — intention, choix visuels et vérification.
 - [`edit-decision-list.json`](edit-decision-list.json) — paramètres de montage et d’export.
@@ -15,7 +16,7 @@ Style éditorial / scrapbook inspiré de Pinterest : papier crème, encre chaude
 
 ## Sous-titres
 
-**L’export ne contient pas encore de sous-titres verbatim.** Aucun modèle de transcription local n’est disponible dans cet environnement. Pour ne pas inventer de paroles, la transcription reste à fournir; la zone basse est laissée dégagée pour pouvoir les ajouter ensuite à partir d’un `.txt` ou `.srt`. La vidéo n’a été envoyée à aucun service externe.
+Les sous-titres anglais sont intégrés dans `final.mp4` et disponibles en fichier séparé dans `captions-en.srt`. La transcription a été produite localement par Whisper tiny multilingue, puis recoupée avec Vosk small anglais; l’audio n’a été envoyé à aucun service externe. Le texte n’a été ni traduit ni reformulé. C’est une transcription automatique, non relue par une personne à l’écoute : vérifier notamment le nom de marque et l’URL avant une diffusion importante.
 
 ## Reproduction locale
 
@@ -24,7 +25,8 @@ Le générateur utilise FFmpeg, Pillow, FontTools et Brotli; il réutilise les p
 ```bash
 python3 -m pip install Pillow fonttools brotli
 python3 videos/edit/motion-design/render_overlay.py \
-  videos/edit/source/video-brut.mp4 videos/edit/final.mp4
+  videos/edit/source/video-brut.mp4 videos/edit/final.mp4 \
+  videos/edit/captions-en.srt
 ```
 
 FFmpeg doit être sur le `PATH` (ou son chemin passé avec la variable d’environnement `FFMPEG`).

@@ -45,8 +45,14 @@
     "video_codec": "H.264 High, level 4.1, yuv420p, CRF 17",
     "audio_codec": "AAC-LC, 192 kbit/s, 48000 Hz, stereo",
     "captions": {
-      "included": false,
-      "reason": "Aucun modèle de transcription local disponible; aucun texte n'a été inventé et aucun service externe n'a été utilisé."
+      "included": true,
+      "burned_in": true,
+      "sidecar": "captions-en.srt",
+      "language": "en",
+      "transcription": "Local cross-check with Whisper tiny multilingual and Vosk small English; timed from word-level Vosk output.",
+      "human_proofread": false,
+      "external_media_services_used": false,
+      "notes": "Automatic transcript, not human-listened; verify brand name and URL before publication."
     }
   }
 }

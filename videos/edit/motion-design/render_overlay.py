@@ -10,6 +10,7 @@ from __future__ import annotations
 import io
 import math
 import os
+import re
 import shutil
 import struct
 import subprocess
@@ -88,6 +89,51 @@ def rounded_card(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], radi
     draw.rounded_rectangle(box, radius=radius, fill=PAPER, outline=INK, width=3)
 
 
+def srt_seconds(value: str) -> float:
+    match = re.fullmatch(r"(\d{2}):(\d{2}):(\d{2}),(\d{3})", value.strip())
+    if not match:
+        raise ValueError(f"Invalid SRT timecode: {value!r}")
+    hours, minutes, seconds, milliseconds = map(int, match.groups())
+    return hours * 3600 + minutes * 60 + seconds + milliseconds / 1000
+
+
+def load_srt(path: Path) -> list[tuple[float, float, str]]:
+    """Read plain SRT captions so the exported graphics stay reproducible offline."""
+    text = path.read_text(encoding="utf-8-sig").replace("\r\n", "\n").strip()
+    cues: list[tuple[float, float, str]] = []
+    for block in re.split(r"\n\s*\n", text):
+        lines = block.splitlines()
+        time_index = next((i for i, line in enumerate(lines) if "-->" in line), None)
+        if time_index is None:
+            continue
+        left, right = (part.strip() for part in lines[time_index].split("-->", 1))
+        start, end = srt_seconds(left), srt_seconds(right)
+        caption = "\n".join(line.rstrip() for line in lines[time_index + 1:]).strip()
+        if not caption or end <= start:
+            raise ValueError(f"Invalid SRT cue in {path}: {block!r}")
+        cues.append((start, end, caption))
+    if not cues:
+        raise ValueError(f"No subtitle cues found in {path}")
+    return cues
+
+
+def draw_caption(draw: ImageDraw.ImageDraw, text: str, font: ImageFont.FreeTypeFont) -> None:
+    """Render a compact paper caption card in the same ink/terracotta visual system."""
+    spacing = 8
+    bbox = draw.multiline_textbbox((0, 0), text, font=font, spacing=spacing, align="center")
+    text_w, text_h = bbox[2] - bbox[0], bbox[3] - bbox[1]
+    padding_x, padding_y = 36, 24
+    card_w = min(960, max(480, text_w + padding_x * 2))
+    card_h = text_h + padding_y * 2
+    x = (WIDTH - card_w) // 2
+    y = HEIGHT - 150 - card_h
+    rounded_card(draw, (x, y, x + card_w, y + card_h), radius=24)
+    text_x = (WIDTH - text_w) / 2 - bbox[0]
+    text_y = y + (card_h - text_h) / 2 - bbox[1]
+    draw.multiline_text((text_x, text_y), text, font=font, fill=INK,
+                        spacing=spacing, align="center")
+
+
 def spaced_text(draw: ImageDraw.ImageDraw, xy: tuple[int, int], text: str,
                 font: ImageFont.FreeTypeFont, fill: tuple[int, int, int, int],
                 tracking: int = 1) -> None:
@@ -111,7 +157,8 @@ def draw_sparkle(draw: ImageDraw.ImageDraw, cx: float, cy: float, radius: float,
     draw.line(points + [points[0]], fill=outline, width=3, joint="curve")
 
 
-def make_frame(t: float, fonts: dict[str, ImageFont.FreeTypeFont], levels: list[float]) -> Image.Image:
+def make_frame(t: float, fonts: dict[str, ImageFont.FreeTypeFont], levels: list[float],
+               captions: list[tuple[float, float, str]]) -> Image.Image:
     image = Image.new("RGBA", (WIDTH, HEIGHT), (0, 0, 0, 0))
     draw = ImageDraw.Draw(image, "RGBA")
 
@@ -197,15 +244,23 @@ def make_frame(t: float, fonts: dict[str, ImageFont.FreeTypeFont], levels: list[
     draw_sparkle(draw, 1001, 366, star_radius, 0.10 * math.sin(2 * math.pi * t / 4.2), star_alpha)
     draw_sparkle(draw, 76, 375, 11, 0.08 * math.sin(2 * math.pi * t / 5.1), int(145 * wave_enter))
 
+    # Captions are derived from a locally cross-checked transcript and burn into the
+    # lower safe area as small paper cards, matching the editorial graphic language.
+    for start, end, caption in captions:
+        if start <= t < end:
+            draw_caption(draw, caption, fonts["caption"])
+            break
+
     return image
 
 
 def main() -> int:
-    if len(sys.argv) != 3:
-        print("Usage: render_overlay.py <source.mp4> <output.mp4>", file=sys.stderr)
+    if len(sys.argv) not in (3, 4):
+        print("Usage: render_overlay.py <source.mp4> <output.mp4> [captions.srt]", file=sys.stderr)
         return 2
     source = Path(sys.argv[1]).resolve()
     output = Path(sys.argv[2]).resolve()
+    captions = load_srt(Path(sys.argv[3]).resolve()) if len(sys.argv) == 4 else []
     if not source.is_file():
         print(f"Source not found: {source}", file=sys.stderr)
         return 2
@@ -218,6 +273,7 @@ def main() -> int:
 
     fonts = {
         "sans": ImageFont.truetype(str(font_ttf(FONT_SOURCES["sans"], "Inter-700")), 39),
+        "caption": ImageFont.truetype(str(font_ttf(FONT_SOURCES["sans"], "Inter-700")), 42),
         "mono": ImageFont.truetype(str(font_ttf(FONT_SOURCES["mono"], "JetBrainsMono-400")), 16),
         "hand": ImageFont.truetype(str(font_ttf(FONT_SOURCES["hand"], "Caveat-700")), 47),
     }
@@ -250,7 +306,7 @@ def main() -> int:
     try:
         for frame_no in range(FRAME_COUNT):
             t = frame_no / FPS
-            frame = make_frame(t, fonts, levels)
+            frame = make_frame(t, fonts, levels, captions)
             buffer = io.BytesIO()
             frame.save(buffer, format="PNG", compress_level=1)
             proc.stdin.write(buffer.getvalue())
